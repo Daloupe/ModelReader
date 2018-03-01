@@ -2,13 +2,21 @@ LINQ Tests:
                      Method |        Mean |        Error |     StdDev |   Gen 0 |   Gen 1 | Allocated |
 --------------------------- |------------:|-------------:|-----------:|--------:|--------:|----------:|
          NumberDESC_Control |  1,504.3 us |    24.837 us |  16.428 us | 23.4375 |  5.8594 | 157.81 KB |
-                 NumberDESC |  3,192.4 us |    52.398 us |  34.658 us | 66.4063 | 19.5313 | 431.28 KB | As we neeed to box value types, vannile lambdas on value types are faster, as expected.
+                 NumberDESC |  3,192.4 us |    52.398 us |  34.658 us | 66.4063 | 19.5313 | 431.28 KB | 
+As we neeed to box value types, vannile lambdas on value types are faster, as expected.
+
  NameDESC_NumberASC_Control | 17,814.1 us |   436.310 us | 288.592 us |       - |       - | 236.06 KB |
-         NameDESC_NumberASC | 16,542.1 us | 1,269.536 us | 839.720 us | 62.5000 |       - | 509.87 KB | Ordering by both a ref type and value type, we see a slight improvement in speed, despite the boxing.
+         NameDESC_NumberASC | 16,542.1 us | 1,269.536 us | 839.720 us | 62.5000 |       - | 509.87 KB | 
+Ordering by both a ref type and value type, we see a slight improvement in speed, despite the boxing.
+
             BoolASC_Control |    708.4 us |     5.604 us |   3.707 us | 20.5078 |  3.9063 | 128.43 KB |
-                    BoolASC |  1,972.7 us |    75.764 us |  50.113 us | 68.3594 | 19.5313 | 431.24 KB | As before, single value types aren't a good fit.
+                    BoolASC |  1,972.7 us |    75.764 us |  50.113 us | 68.3594 | 19.5313 | 431.24 KB | 
+As before, single value types aren't a good fit.
+
           StringASC_Control | 11,163.6 us |   202.308 us | 133.815 us | 15.6250 |       - | 196.95 KB |
-                  StringASC |  8,397.3 us |   148.581 us |  98.277 us | 15.6250 |       - | 196.95 KB | But we do see non-trivial speed% increase when dealing purely with Ref Types :D
+                  StringASC |  8,397.3 us |   148.581 us |  98.277 us | 15.6250 |       - | 196.95 KB | 
+But we do see non-trivial speed% increase when dealing purely with Ref Types :D
+
 
 Mongo Aggregate Tests:
                    Method |     Mean |      Error |     StdDev |  Gen 0 | Allocated |
